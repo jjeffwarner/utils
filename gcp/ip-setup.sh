@@ -2,13 +2,13 @@
 # Setup the static IP and firewall rules
 
 gcloud compute addresses create jw-boulder-dev-vm-ip \
---project=database-schema-research \ 
+--project=database-schema-research \
 --network-tier=standard \
---region=us-central1 
+--region=us-central1
 
 IP_ADDRESS_DEV_MACHINE=$(gcloud compute addresses list \
---filter=”name:name:test-boulder-dev-vm-ip AND region:region:us-central1" \
---format=”value(address_range())”
+--filter="name:jw-boulder-dev-vm-ip AND region:us-central1" \
+--format="value(address_range())"
 )
 
 export IP_ADDRESS_DEV_MACHINE
