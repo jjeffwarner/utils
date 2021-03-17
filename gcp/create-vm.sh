@@ -12,7 +12,7 @@ gcloud compute instances create jw-boulder-dev-vm \
 --boot-disk-size=210GB \
 --boot-disk-type=pd-standard \
 --boot-disk-device-name=jw-boulder-dev-vm \
---metadata-from-file startup-script=tutorial-dev-machine.sh \
+--metadata-from-file startup-script=boulder-dev-machine.sh \
 --network-tier=STANDARD \
 --address=$IP_ADDRESS_DEV_MACHINE \
 --subnet=default \
