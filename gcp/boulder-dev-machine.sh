@@ -61,9 +61,54 @@ sudo apt-get install -y google-cloud-sdk
 sudo snap install --classic code
 
 # Setup for boulder
-# sudo apt install -y ruby-full
-sudo apt install -y curl g++ gcc autoconf automake bison libc6-dev \
-        libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool \
-        libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev \
-        libreadline-dev libssl-dev
+# need Ruby version 2.5
+sudo apt-get install -y ruby-full
 
+# Setup node
+sudo apt-get install -y nodejs npm
+
+# Setup yarn
+sudo apt-get install -y yarn
+
+# setup Redis
+sudo apt-get install -y redis-server
+
+# setup Postgres
+# current version is 10
+sudo apt-get install -y postgresql postgresql-contrib
+# sudo -u postgres psql -c "SELECT version();"
+sudo mkdir -p /usr/local/var/pgsql/data
+sudo chown jeff_warner /usr/local/var/pgsql/data
+
+##
+## Setup
+##
+# export PATH="/usr/lib/postgresql/10/bin:$PATH"
+# echo 'export PATH="/usr/lib/postgresql/10/bin:$PATH"' >> ~/.bash_profile
+# initdb -D /usr/local/var/pgsql/data
+# pg_ctl -D /usr/local/var/pgsql/data -l logfile start
+
+# Rails setup
+gem install rails -v 5.2.4.5
+
+# setup ElasticSearch + Java
+# start service takes around 20 seconds :( 
+sudo apt-get install -y default-jdk
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo sh -c 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" > /etc/apt/sources.list.d/elastic-7.x.list'
+sudo apt-get update
+sudo apt-get install -y elastricsearch
+sudo systemctl enable elasticsearch.service --now
+
+# verify that elasticsearch is running with curl -X GET "localhost:9200/" via ssh
+
+
+# setup gems
+sudo gem install -y bundler
+
+
+###
+# Testing stuff via ssh
+# I had to delete lock files for apt-get https://itsfoss.com/could-not-get-lock-error/
+#
+###

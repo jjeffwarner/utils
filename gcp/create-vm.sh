@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # create the VM for boulder
+# VM will have 1 CPU and 4GB of RAM. n1-standard-2 will have 2 CPU and 8GB RAM
 
 gcloud compute instances create jw-boulder-dev-vm \
 --project=database-schema-research \
@@ -17,4 +18,4 @@ gcloud compute instances create jw-boulder-dev-vm \
 --address=$IP_ADDRESS_DEV_MACHINE \
 --subnet=default \
 --tags=http-server,https-server \
---labels=os=ubuntu-18-04-lts,cost-alloc=tutorials,usage=boulder,configuration=v1-1-0
+--labels=os=ubuntu-18-04-lts,cost-alloc=development,usage=boulder,configuration=v1-1-1
