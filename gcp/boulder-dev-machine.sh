@@ -88,9 +88,6 @@ sudo chown jeff_warner /usr/local/var/pgsql/data
 # initdb -D /usr/local/var/pgsql/data
 # pg_ctl -D /usr/local/var/pgsql/data -l logfile start
 
-# Rails setup
-gem install rails -v 5.2.4.5
-
 # setup ElasticSearch + Java
 # start service takes around 20 seconds :( 
 sudo apt-get install -y default-jdk
@@ -102,9 +99,12 @@ sudo systemctl enable elasticsearch.service --now
 
 # verify that elasticsearch is running with curl -X GET "localhost:9200/" via ssh
 
+# Rails setup
+gem install rails -v 5.2.4.5
+
 
 # setup gems
-sudo gem install -y bundler
+# sudo gem install -y bundler
 
 
 ###

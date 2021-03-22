@@ -17,3 +17,13 @@ gcloud compute addresses create jw-boulder-dev-vm-ip \
 --network-tier=standard \
 --region=us-central1
 ````
+
+## Firewall Rules
+
+
+## The VM
+
+
+## Thoughts
+CloudSQL or Docker for Redis and Postgres?
+
