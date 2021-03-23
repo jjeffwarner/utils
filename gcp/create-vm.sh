@@ -18,4 +18,4 @@ gcloud compute instances create jw-boulder-dev-vm \
 --address=$IP_ADDRESS_DEV_MACHINE \
 --subnet=default \
 --tags=http-server,https-server,ruby-admin \
---labels=os=ubuntu-18-04-lts,cost-alloc=development,usage=boulder,configuration=v1-1-1
+--labels=os=ubuntu-18-04-lts,cost-alloc=development,usage=boulder,configuration=v1-1-2
