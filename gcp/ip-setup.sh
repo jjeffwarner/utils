@@ -31,3 +31,12 @@ gcloud compute firewall-rules create allow-https \
 --rules=tcp:443 \
 --source-ranges=0.0.0.0/0 \
 --target-tags=https-server
+
+gcloud compute firewall-rules create allow-http \
+--project=database-schema-research \
+--direction=INGRESS \
+--network=default \
+--action=ALLOW \
+--rules=tcp:3000 \
+--source-ranges=0.0.0.0/0 \
+--target-tags=ruby-admin

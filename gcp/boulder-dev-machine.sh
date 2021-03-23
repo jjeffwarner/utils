@@ -60,9 +60,14 @@ sudo apt-get install -y google-cloud-sdk
 # Install Visual Studio Code
 sudo snap install --classic code
 
+# we need curl
+sudo apt-get install -y curl
+
 # Setup for boulder
 # need Ruby version 2.5
-sudo apt-get install -y ruby-full
+# sudo apt-get install -y ruby-full
+# using rvm instead after the machine is setup with version 2.5.7
+# https://vitux.com/installing-and-configuring-ruby-on-rails-on-debian-10/
 
 # Setup node
 sudo apt-get install -y nodejs npm
@@ -71,12 +76,14 @@ sudo apt-get install -y nodejs npm
 sudo apt-get install -y yarn
 
 # setup Redis
+# check status with sudo systemctl status redis-server
 sudo apt-get install -y redis-server
 
 # setup Postgres
 # current version is 10
-sudo apt-get install -y postgresql postgresql-contrib
+sudo apt-get install -y postgresql postgresql-contrib libpg-dev 
 # sudo -u postgres psql -c "SELECT version();"
+# sudo systemctl status postgresql
 sudo mkdir -p /usr/local/var/pgsql/data
 sudo chown jeff_warner /usr/local/var/pgsql/data
 
@@ -86,7 +93,9 @@ sudo chown jeff_warner /usr/local/var/pgsql/data
 # export PATH="/usr/lib/postgresql/10/bin:$PATH"
 # echo 'export PATH="/usr/lib/postgresql/10/bin:$PATH"' >> ~/.bash_profile
 # initdb -D /usr/local/var/pgsql/data
+# sudo chown jeff_warner /var/run/postgresql
 # pg_ctl -D /usr/local/var/pgsql/data -l logfile start
+# createuser -s postgres
 
 # setup ElasticSearch + Java
 # start service takes around 20 seconds :( 
@@ -104,7 +113,10 @@ gem install rails -v 5.2.4.5
 
 
 # setup gems
-# sudo gem install -y bundler
+# sudo chown jeff_warner /var/lib/gems/2.5.0
+# sudo chgrp jeff_warner /var/lib/gems/2.5.0
+# sudo chown jeff_warner /var/lib/bin
+# gem install bundler
 
 
 ###

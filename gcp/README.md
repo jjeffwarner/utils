@@ -23,6 +23,9 @@ gcloud compute addresses create jw-boulder-dev-vm-ip \
 
 ## The VM
 
+## Using IAP for TCP forwarding
+https://cloud.google.com/iap/docs/using-tcp-forwarding
+
 
 ## Thoughts
 CloudSQL or Docker for Redis and Postgres?
