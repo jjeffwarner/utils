@@ -32,7 +32,7 @@ gcloud compute firewall-rules create allow-https \
 --source-ranges=0.0.0.0/0 \
 --target-tags=https-server
 
-gcloud compute firewall-rules create allow-http \
+gcloud compute firewall-rules create allow-ror-admin \
 --project=database-schema-research \
 --direction=INGRESS \
 --network=default \
