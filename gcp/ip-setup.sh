@@ -40,3 +40,18 @@ gcloud compute firewall-rules create allow-ror-admin \
 --rules=tcp:3000 \
 --source-ranges=0.0.0.0/0 \
 --target-tags=ruby-admin
+
+
+# setup IAP access
+gcloud compute firewall-rules create allow-rdp-ingress-from-iap \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:3389 \
+  --source-ranges=35.235.240.0/20
+
+gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:22 \
+  --source-ranges=35.235.240.0/20
+

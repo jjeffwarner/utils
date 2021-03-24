@@ -14,6 +14,7 @@ gcloud compute instances create jw-boulder-dev-vm \
 --boot-disk-type=pd-standard \
 --boot-disk-device-name=jw-boulder-dev-vm \
 --metadata-from-file startup-script=boulder-dev-machine.sh \
+--metadata serial-port-logging-enable=true \
 --network-tier=STANDARD \
 --address=$IP_ADDRESS_DEV_MACHINE \
 --subnet=default \
