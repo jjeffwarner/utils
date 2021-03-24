@@ -81,11 +81,12 @@ sudo apt-get install -y redis-server
 
 # setup Postgres
 # current version is 10
-sudo apt-get install -y postgresql postgresql-contrib libpg-dev 
+sudo apt-get install -y postgresql postgresql-contrib libpq-dev 
 # sudo -u postgres psql -c "SELECT version();"
 # sudo systemctl status postgresql
 sudo mkdir -p /usr/local/var/pgsql/data
-sudo chown jeff_warner /usr/local/var/pgsql/data
+# doesn't look like my user is setup yet so this doesn't work.
+# sudo chown jeff_warner /usr/local/var/pgsql/data
 
 ##
 ## Setup
@@ -103,13 +104,29 @@ sudo apt-get install -y default-jdk
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo sh -c 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" > /etc/apt/sources.list.d/elastic-7.x.list'
 sudo apt-get update
-sudo apt-get install -y elastricsearch
+sudo apt-get install -y elasticsearch
 sudo systemctl enable elasticsearch.service --now
 
 # verify that elasticsearch is running with curl -X GET "localhost:9200/" via ssh
 
+##
+# Ruby and Rails setup
+##
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 \
+7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+source /home/jeff_warner/.rvm/scripts/rvm
+
+rvm install ruby-2.5.7
+rvm use 2.5.7 --default
+
+
+
 # Rails setup
 gem install rails -v 5.2.4.5
+gem install bundler
 
 
 # setup gems
