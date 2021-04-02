@@ -34,6 +34,7 @@ rvm use 2.5.7 --default
 #gem install rails -v 5.2.4.5
 gem install rails -v 5.2.3
 gem install bundler
+bundle
 
 
 # setup gems
@@ -41,3 +42,6 @@ gem install bundler
 # sudo chgrp jeff_warner /var/lib/gems/2.5.0
 # sudo chown jeff_warner /var/lib/bin
 # gem install bundler
+
+
+# @TODO: Hmm, after running X I lost the CLICOLORS in ssh

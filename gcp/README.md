@@ -16,7 +16,7 @@ gcloud compute addresses create jw-boulder-dev-vm-ip \
 --project=database-schema-research \ 
 --network-tier=standard \
 --region=us-central1
-````
+```
 
 ## Firewall Rules
 
@@ -26,6 +26,14 @@ gcloud compute addresses create jw-boulder-dev-vm-ip \
 ## Using IAP for TCP forwarding
 https://cloud.google.com/iap/docs/using-tcp-forwarding
 
+
+## Running it
+
+This was a bit fun to figure out. The binding switch lets in connections from any IP. That can be scary but the firewall on GCP should be configured to restrict where connections come in from.
+
+```
+rails s --port=3000 --binding=0.0.0.0
+```
 
 ## Thoughts
 CloudSQL or Docker for Redis and Postgres?
