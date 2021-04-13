@@ -87,6 +87,8 @@ sudo apt-get install -y redis-server
 sudo apt-get install -y postgresql postgresql-contrib libpq-dev 
 # sudo -u postgres psql -c "SELECT version();"
 # sudo systemctl status postgresql
+sudo systemctl stop postgresql
+sudo systemctl disable postgresql
 sudo mkdir -p /usr/local/var/pgsql/data
 # doesn't look like my user is setup yet so this doesn't work.
 # sudo chown jeff_warner /usr/local/var/pgsql/data

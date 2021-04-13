@@ -6,6 +6,7 @@
 ##
 ## Setup
 ##
+# @todo: how to just use the installed setup and skip the inidb stuff.
 export PATH="/usr/lib/postgresql/10/bin:$PATH"
 echo 'export PATH="/usr/lib/postgresql/10/bin:$PATH"' >> ~/.bash_profile
 initdb -D /usr/local/var/pgsql/data
@@ -27,8 +28,8 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 source /home/jeff_warner/.rvm/scripts/rvm
 
-rvm install ruby-2.5.7
-rvm use 2.5.7 --default
+rvm install ruby-2.7.3
+rvm use 2.7.3 --default
 
 # Rails setup
 #gem install rails -v 5.2.4.5
