@@ -12,7 +12,7 @@ gcloud compute instances create jw-boulder-dev-vm \
 --zone=us-central1-c \
 --machine-type=n1-standard-1 \
 --preemptible \
---image=ubuntu-1804-bionic-v20210323 \
+--image=ubuntu-1804-bionic-v20210412 \
 --image-project=ubuntu-os-cloud \
 --boot-disk-size=210GB \
 --boot-disk-type=pd-standard \

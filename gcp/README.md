@@ -7,8 +7,9 @@ I started a new job and got an M1 Mac and some stuff we use doesn't work on it. 
 # Initial Setup
 These just have to happen once. From the GCP console run the following scripts:
 
-1. `./gcp/ip-setup.sh`
-2. `./gcp/create-vm.sh`
+1. `cd gcp`
+2. `./ip-setup.sh`
+3. `./create-vm.sh`
 
 Now you can log into the machine via the Compute Engine/VM Instances dashboard.
 
