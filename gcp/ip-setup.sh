@@ -55,3 +55,9 @@ gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
   --rules=tcp:22 \
   --source-ranges=35.235.240.0/20
 
+# Setup IAP access for Rails console. Comment and/or remote 'allow-ror-admin' above
+gcloud compute firewall-rules create allow-rails-concole-ingress-from-iap \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:3000 \
+  --source-ranges=35.235.240.0/20
