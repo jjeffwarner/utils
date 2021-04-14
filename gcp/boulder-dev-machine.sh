@@ -82,6 +82,9 @@ npm install -g yarn
 # check status with sudo systemctl status redis-server
 sudo apt-get install -y redis-server
 
+# setup mime info
+sudo apt-get install shared-mime-info
+
 # setup Postgres
 # current version is 10
 sudo apt-get install -y postgresql postgresql-contrib libpq-dev 
@@ -117,6 +120,9 @@ sudo systemctl enable elasticsearch.service --now
 
 # verify that elasticsearch is running with curl -X GET "localhost:9200/" via ssh
 
+
+# clean up
+sudo apt autoremove
 
 
 ###

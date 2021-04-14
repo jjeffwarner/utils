@@ -15,10 +15,11 @@ Now you can log into the machine via the Compute Engine/VM Instances dashboard.
 
 From inside the VM, you need to do the following:
 
-1. Log into Github and clone the util directory
-2. run `./gcp/initial-setup.sh`
-3. Clone boulder repo to the machine 
-4. Finish boulder setup
+1. Configure remote Github access via ssh
+2. Log into Github and clone the util directory
+3. run `./gcp/initial-setup.sh`
+4. Clone boulder repo to the machine 
+5. Finish boulder setup
 
 ## Setup a static IP
 

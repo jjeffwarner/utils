@@ -1,16 +1,19 @@
 #! /bin/bash
 
-# Finish setup for Postgresql
- sudo chown jeff_warner /usr/local/var/pgsql/data
+
 
 ##
 ## Setup
 ##
 # @todo: how to just use the installed setup and skip the inidb stuff.
+# Finish setup for Postgresql
+#
+user = `whoami`
+sudo chown $user /usr/local/var/pgsql/data
 export PATH="/usr/lib/postgresql/10/bin:$PATH"
 echo 'export PATH="/usr/lib/postgresql/10/bin:$PATH"' >> ~/.bash_profile
 initdb -D /usr/local/var/pgsql/data
-sudo chown jeff_warner /var/run/postgresql
+sudo chown $user /var/run/postgresql
 pg_ctl -D /usr/local/var/pgsql/data -l logfile start
 createuser -s postgres
 
@@ -26,17 +29,19 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 
 curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-source /home/jeff_warner/.rvm/scripts/rvm
+source /home/$user/.rvm/scripts/rvm
 
 rvm install ruby-2.7.3
 rvm use 2.7.3 --default
 
 # Rails setup
-#gem install rails -v 5.2.4.5
+cd boulder
 gem install rails -v 5.2.3
 gem install bundler
 bundle
 
+# setup React stuff
+yarn install
 
 # setup gems
 # sudo chown jeff_warner /var/lib/gems/2.5.0
