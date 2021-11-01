@@ -6,9 +6,10 @@
 # enable serial port logging with
 # --metadata serial-port-logging-enable=true \
 
+INSTANCE_NAME=jw-sg-dev-vm
 
-gcloud compute instances create jw-boulder-dev-vm \
---project=database-schema-research \
+gcloud compute instances create $INSTANCE_NAME \
+--project=$PROJECT_NAME \
 --zone=us-central1-c \
 --machine-type=n1-standard-1 \
 --preemptible \
@@ -16,10 +17,10 @@ gcloud compute instances create jw-boulder-dev-vm \
 --image-project=ubuntu-os-cloud \
 --boot-disk-size=210GB \
 --boot-disk-type=pd-standard \
---boot-disk-device-name=jw-boulder-dev-vm \
---metadata-from-file startup-script=boulder-dev-machine.sh \
+--boot-disk-device-name=jw-sg-dev-vm \
+--metadata-from-file startup-script=sg-dev-machine.sh \
 --network-tier=STANDARD \
 --address=$IP_ADDRESS_DEV_MACHINE \
 --subnet=default \
---tags=http-server,https-server,ruby-admin \
---labels=os=ubuntu-18-04-lts,cost-alloc=development,usage=boulder,configuration=v1-1-3
+--tags=http-server,https-server \
+--labels=os=ubuntu-18-04-lts,cost-alloc=development,usage=sourcegraph,configuration=v1-1-3

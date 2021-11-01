@@ -1,13 +1,16 @@
 #! /bin/bash
 # Setup the static IP and firewall rules
 
-gcloud compute addresses create jw-boulder-dev-vm-ip \
-  --project=database-schema-research \
+export PROJECT_NAME=JJW-sg-working-area
+ADDRESS_NAME=jw-sg-dev-vm-ip
+
+gcloud compute addresses create $ADDRESS_NAME \
+  --project=$PROJECT_NAME \
   --network-tier=standard \
   --region=us-central1
 
 IP_ADDRESS_DEV_MACHINE=$(gcloud compute addresses list \
---filter="name:jw-boulder-dev-vm-ip AND region:us-central1" \
+--filter="name:$ADDRESS_NAME AND region:us-central1" \
 --format="value(address_range())"
 )
 
@@ -15,7 +18,7 @@ export IP_ADDRESS_DEV_MACHINE
 
 #firewall rules
 gcloud compute firewall-rules create allow-http \
-  --project=database-schema-research \
+  --project=$PROJECT_NAME \
   --direction=INGRESS \
   --network=default \
   --action=ALLOW \
@@ -24,7 +27,7 @@ gcloud compute firewall-rules create allow-http \
   --target-tags=http-server
 
 gcloud compute firewall-rules create allow-https \
-  --project=database-schema-research \
+  --project=$PROJECT_NAME \
   --direction=INGRESS \
   --network=default \
   --action=ALLOW \
@@ -32,14 +35,14 @@ gcloud compute firewall-rules create allow-https \
   --source-ranges=0.0.0.0/0 \
   --target-tags=https-server
 
-gcloud compute firewall-rules create allow-ror-admin \
-  --project=database-schema-research \
-  --direction=INGRESS \
-  --network=default \
-  --action=ALLOW \
-  --rules=tcp:3000 \
-  --source-ranges=0.0.0.0/0 \
-  --target-tags=ruby-admin
+# gcloud compute firewall-rules create allow-ror-admin \
+#   --project=$PROJECT_NAME \
+#   --direction=INGRESS \
+#   --network=default \
+#   --action=ALLOW \
+#   --rules=tcp:3000 \
+#   --source-ranges=0.0.0.0/0 \
+#   --target-tags=ruby-admin
 
 
 # setup IAP access
@@ -56,8 +59,8 @@ gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
   --source-ranges=35.235.240.0/20
 
 # Setup IAP access for Rails console. Comment and/or remote 'allow-ror-admin' above
-gcloud compute firewall-rules create allow-rails-concole-ingress-from-iap \
-  --direction=INGRESS \
-  --action=allow \
-  --rules=tcp:3000 \
-  --source-ranges=35.235.240.0/20
+# gcloud compute firewall-rules create allow-rails-concole-ingress-from-iap \
+#   --direction=INGRESS \
+#   --action=allow \
+#   --rules=tcp:3000 \
+#   --source-ranges=35.235.240.0/20
