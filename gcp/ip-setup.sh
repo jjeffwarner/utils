@@ -1,7 +1,7 @@
 #! /bin/bash
 # Setup the static IP and firewall rules
 
-export PROJECT_NAME=JJW-sg-working-area
+export PROJECT_NAME=jjw-sg-working-area
 ADDRESS_NAME=jw-sg-dev-vm-ip
 
 gcloud compute addresses create $ADDRESS_NAME \
