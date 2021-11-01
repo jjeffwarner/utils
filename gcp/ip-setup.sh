@@ -1,11 +1,11 @@
 #! /bin/bash
 # Setup the static IP and firewall rules
 
-export PROJECT_NAME=jjw-sg-working-area
+PROJECT_ID=jjw-sg-working-area
 ADDRESS_NAME=jw-sg-dev-vm-ip
 
 gcloud compute addresses create $ADDRESS_NAME \
-  --project=$PROJECT_NAME \
+  --project=$PROJECT_ID \
   --network-tier=standard \
   --region=us-central1
 
@@ -18,7 +18,7 @@ export IP_ADDRESS_DEV_MACHINE
 
 #firewall rules
 gcloud compute firewall-rules create allow-http \
-  --project=$PROJECT_NAME \
+  --project=$PROJECT_ID \
   --direction=INGRESS \
   --network=default \
   --action=ALLOW \
@@ -27,7 +27,7 @@ gcloud compute firewall-rules create allow-http \
   --target-tags=http-server
 
 gcloud compute firewall-rules create allow-https \
-  --project=$PROJECT_NAME \
+  --project=$PROJECT_ID \
   --direction=INGRESS \
   --network=default \
   --action=ALLOW \
@@ -36,7 +36,7 @@ gcloud compute firewall-rules create allow-https \
   --target-tags=https-server
 
 # gcloud compute firewall-rules create allow-ror-admin \
-#   --project=$PROJECT_NAME \
+#   --project=$PROJECT_ID \
 #   --direction=INGRESS \
 #   --network=default \
 #   --action=ALLOW \

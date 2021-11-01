@@ -7,9 +7,10 @@
 # --metadata serial-port-logging-enable=true \
 
 INSTANCE_NAME=jw-sg-dev-vm
+PROJECT_ID=jjw-sg-working-area
 
 gcloud compute instances create $INSTANCE_NAME \
---project=$PROJECT_NAME \
+--project=$PROJECT_ID \
 --zone=us-central1-c \
 --machine-type=n1-standard-1 \
 --preemptible \
