@@ -28,7 +28,7 @@ Use script ip-setup.sh
 Using us-central1 seems reasonable so create the static IP address.
 
 ```
-gcloud compute addresses create jw-boulder-dev-vm-ip \ 
+gcloud compute addresses create jw-sg-dev-vm-ip \ 
 --project=jjw-sg-working-area \ 
 --network-tier=standard \
 --region=us-central1
