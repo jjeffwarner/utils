@@ -18,8 +18,8 @@ From inside the VM, you need to do the following:
 1. Configure remote Github access via ssh
 2. Log into Github and clone the util directory
 3. run `./gcp/initial-setup.sh`
-4. Clone boulder repo to the machine 
-5. Finish boulder setup
+4. Clone repo to the machine 
+5. Finish setup
 
 ## Setup a static IP
 
@@ -29,7 +29,7 @@ Using us-central1 seems reasonable so create the static IP address.
 
 ```
 gcloud compute addresses create jw-boulder-dev-vm-ip \ 
---project=database-schema-research \ 
+--project=jjw-sg-working-area \ 
 --network-tier=standard \
 --region=us-central1
 ```
@@ -52,13 +52,6 @@ Disable external IP and move to SSL -L approach.
 
 Add the ssh key to github so you can access your repos.
 
-# Setting Up Boulder et al.
-
-## Ruby flags
-For compilers to find ruby you may need to set:
-  export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-  export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-
 # Running it
 
 This was a bit fun to figure out. The binding switch lets in connections from any IP. That can be scary but the firewall on GCP should be configured to restrict where connections come in from.
@@ -66,7 +59,3 @@ This was a bit fun to figure out. The binding switch lets in connections from an
 ```
 rails s --port=3000 --binding=0.0.0.0
 ```
-
-## Thoughts
-CloudSQL or Docker for Redis and Postgres?
-
