@@ -12,7 +12,7 @@ PROJECT_ID=jjw-sg-working-area
 gcloud compute instances create $INSTANCE_NAME \
 --project=$PROJECT_ID \
 --zone=us-central1-c \
---machine-type=n1-standard-1 \
+--machine-type=n1-standard-8 \
 --preemptible \
 --image=ubuntu-1804-bionic-v20210412 \
 --image-project=ubuntu-os-cloud \
